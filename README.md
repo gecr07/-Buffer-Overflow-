@@ -9,6 +9,11 @@ El Define una serie de pasos lo cual me parece bien para hacer esto ordenado
 
 ![image](https://github.com/gecr07/-Buffer-Overflow-/assets/63270579/b06f1f2e-9796-4e70-a11f-fa9542521428)
 
+Cada uno de estos pasos son:
+
+![image](https://github.com/gecr07/-Buffer-Overflow-/assets/63270579/3ae16b52-ff6b-4fdc-97a0-40dc66449f43)
+
+
 ## Spike (generic_send_tcp)
 
 When you need to analyze a new network protocol for buffer overflows or similar weaknesses, the SPIKE is the tool of choice for professionals. While it requires a strong knowledge of C to use, it produces results second to none in the field. (ojo tiene muchas herramientas no solo generic send)
