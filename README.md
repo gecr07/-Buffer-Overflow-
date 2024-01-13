@@ -25,7 +25,7 @@ Y el modo de uso es:
 
 ./generic_send_tcp host port spike_script SKIPVAR SKIPSTR
 
-./generic_send_tcp 192.168.0.100 999 something.spk 0 0
+./generic_send_tcp 192.168.0.100 9999 something.spk 0 0
 
 ```
 
@@ -33,7 +33,7 @@ El script en spike que el escribio es el siguiente
 
 ![image](https://github.com/gecr07/-Buffer-Overflow-/assets/63270579/bbafb67f-1e2e-42c1-bce9-c1e62fb56a50)
 
-
+Y lo que va a hacer esto es enviar peticiones a cada una de las  funciones del vuln server. (por defecto esta escuchando en el puerto 9999 el VULN server)
 
 
 
