@@ -233,11 +233,28 @@ Se puede usar mona
 ```
 Esto genera un archivo .bin lo que sigue es compararlo en este caso no pude poner a mona en el disco C: entonces tienes que poner toda la ruta.
 
+![image](https://github.com/gecr07/-Buffer-Overflow-/assets/63270579/23ba5603-0a0b-4a43-bdc7-1311e7e2cb43)
+
+Vamos a encontrar los modulos que no tienen proteccion:
+
+```
+!mona modules
+```
+
+![image](https://github.com/gecr07/-Buffer-Overflow-/assets/63270579/5816b9fb-79a4-4b62-aa3c-16eb1ec4c9e7)
+
+AHORA  ya vimos que de essfunc.dll no tiene protecciones por lo tanto necesitamos apuntar ahi en donde este un JMP ESP para que despues llame a nuestra shellcode.
+
+```
+!mona jmp -r ESP  -m "essfunc.dll"
+```
+![image](https://github.com/gecr07/-Buffer-Overflow-/assets/63270579/07b20cf5-c808-4d59-b0ff-d9dcd03a3852)
 
 
+Vamos a usar esa direccion para que apunte a JMP ESP y esa a nuestra shellcode.
 
 
-
+![image](https://github.com/gecr07/-Buffer-Overflow-/assets/63270579/68dd75da-7d33-423b-9b5d-65ddccbbd41d)
 
 
 
