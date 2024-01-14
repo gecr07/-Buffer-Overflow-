@@ -165,6 +165,12 @@ while True:
 
 ## 4. Find bad chars
 
+Vamos a configurar que mona guarde archivos en el dir C:\mona
+
+```
+!mona config -set workingfolder c:\mona
+```
+
 Por defecto el 00 o null es un bad char porque en windows con eso acaban las cadenas y asi el SO sabe donde acaba (no se  si en linux fucnione asi). 
 
 > https://github.com/cytopia/badchars
