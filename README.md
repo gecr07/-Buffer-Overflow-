@@ -258,6 +258,9 @@ Vamos a usar esa direccion para que apunte a JMP ESP y esa a nuestra shellcode.
 
 
 
+## Creando shellcode
+
+
 
 
 
