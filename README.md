@@ -173,7 +173,7 @@ while True:
 		sys.exit()
 ```
 
-## 4. Find bad chars
+## 5. Find bad chars
 
 Vamos a configurar que mona guarde archivos en el dir C:\mona
 
@@ -243,14 +243,14 @@ while True:
 
 ```
 
-## 5. Find the righ module
+## 6. Find the righ module
 
-Se puede usar mona
+Se puede usar mona que es un modulo con muchas opciones lo pones en la ruta de PyCommands recuerda cuando poner de workingfolder guardara archivos ahi pero no muevas el .py de la carpeta de PyCommands
 
 ```
 !mona bytearray -cpb "\x00"
 ```
-Esto genera un archivo .bin lo que sigue es compararlo en este caso no pude poner a mona en el disco C: entonces tienes que poner toda la ruta.
+Esto genera un archivo .bin lo que sigue es compararlo en este caso no pude poner a mona en el disco C: entonces tienes que poner toda la ruta. (no es necesario poner toda la ruta si ya configuraste el workingfolder)
 
 ![image](https://github.com/gecr07/-Buffer-Overflow-/assets/63270579/23ba5603-0a0b-4a43-bdc7-1311e7e2cb43)
 
@@ -275,7 +275,19 @@ Vamos a usar esa direccion para que apunte a JMP ESP y esa a nuestra shellcode.
 
 ![image](https://github.com/gecr07/-Buffer-Overflow-/assets/63270579/68dd75da-7d33-423b-9b5d-65ddccbbd41d)
 
+Como alternativa KALI tienen NASM
 
+![image](https://github.com/gecr07/-Buffer-Overflow-/assets/63270579/decc1477-930a-4e7f-b236-e51c0dca3c17)
+
+Y entonces buscamos JMP ESP
+
+![image](https://github.com/gecr07/-Buffer-Overflow-/assets/63270579/a371b4c5-092c-4485-a308-306389383afa)
+
+Y lo vamos abuscar con mona 
+
+```
+!mona find -s "xff\xe4" -m essfunc.dll
+```
 
 ## 6. Creando shellcode
 
