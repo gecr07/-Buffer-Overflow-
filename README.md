@@ -54,7 +54,7 @@ Ya en mi maquina pues comenzamos con el spike.
 
 ```
 
-Nos damos cuenta que algo falla porque.
+Nos damos cuenta que algo falla porque. Access violation lo que nos dice que algo es vulnerable revisa siempre el EIP.
 
 ![image](https://github.com/gecr07/-Buffer-Overflow-/assets/63270579/5f0aaf08-750b-480b-bd24-fc29ea0a3def)
 
@@ -94,7 +94,12 @@ while True:
 
 ```
 
-## 3. Encontrar el offset
+De hecho en el video de TCM no crashea el programa mas bien el lo para desde la consola cuando ve que se produce el access violation.
+
+![image](https://github.com/gecr07/-Buffer-Overflow-/assets/63270579/615aa702-4357-4dd1-89a0-981d48200a25)
+
+
+## 3. Encontrar el offset (metasploit)
 
 Vamos a ver exactamente que ofset sobre escribe el EIP.
 
