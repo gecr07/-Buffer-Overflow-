@@ -248,8 +248,18 @@ while True:
 Se puede usar mona que es un modulo con muchas opciones lo pones en la ruta de PyCommands recuerda cuando poner de workingfolder guardara archivos ahi pero no muevas el .py de la carpeta de PyCommands
 
 ```
+!mona config -set workingfolder c:\mona
 !mona bytearray -cpb "\x00"
 ```
+(update) Pero espera entonces eso de bytearray genera un bin despues de eso mandas los badchars con tu script el programa se va a parar ya estan en el ESP los badchars los vamos a comparar para que te diga cual es una bad char.
+
+```
+!mona compare -f c:\mona\bytearray.bin -a Direccion_del_ESP
+```
+
+![image](https://github.com/gecr07/-Buffer-Overflow-/assets/63270579/b611bd66-39a2-4391-83ed-d7669d11bb8c)
+
+
 Esto genera un archivo .bin lo que sigue es compararlo en este caso no pude poner a mona en el disco C: entonces tienes que poner toda la ruta. (no es necesario poner toda la ruta si ya configuraste el workingfolder)
 
 ![image](https://github.com/gecr07/-Buffer-Overflow-/assets/63270579/23ba5603-0a0b-4a43-bdc7-1311e7e2cb43)
