@@ -111,6 +111,8 @@ Vamos a ver exactamente que ofset sobre escribe el EIP.
 
 ![image](https://github.com/gecr07/-Buffer-Overflow-/assets/63270579/bd4e4ba8-7df6-461c-aab6-606b4497b6f1)
 
+![image](https://github.com/gecr07/-Buffer-Overflow-/assets/63270579/47d7c90f-dd3a-4903-8dcb-86778622dc11)
+
 
 ```python
 import sys, socket
@@ -139,7 +141,6 @@ while True:
 
 Vamos a verificar qu si se pudiera escribir una B osea 42 en el EIP 
 
-![image](https://github.com/gecr07/-Buffer-Overflow-/assets/63270579/8e144d49-fb5c-40bf-92e9-b978ec1c8529)
 
 ![image](https://github.com/gecr07/-Buffer-Overflow-/assets/63270579/04eadeac-5f5a-411e-ad34-19e4dd6a6a02)
 
