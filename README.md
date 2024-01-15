@@ -183,7 +183,14 @@ Por defecto el 00 o null es un bad char porque en windows con eso acaban las cad
 
 > https://github.com/cytopia/badchars
 
-Metemeos esos badchars con el script
+Metemeos esos badchars con el script. Recuerda esa pagina de arriba es para que genere los bad chars osea todos pero igual de ahi los puedes tomar.
+
+> La lista de caracteres que mencionas va desde \x01 hasta \xff, representando todos los bytes posibles en un byte (256 bytes en total). Esta lista se crea de manera exhaustiva para cubrir todos los posibles valores de un byte, ya que en algunos escenarios, es necesario considerar todos los caracteres posibles que podrían ser considerados "malos" o problemáticos en una inyección de shellcode.
+
+En el video dice que si por ejemplo existen bad caracters consecutivos solo el primero va a ser el que le sigue no (no se porque de esta regla.
+
+![image](https://github.com/gecr07/-Buffer-Overflow-/assets/63270579/c5f13079-2a9c-4858-96bd-56cbb88c58e7)
+
 
 ```python
 #!/usr/bin/python3
@@ -234,6 +241,8 @@ while True:
 
 ```
 
+## 5. Find the righ module
+
 Se puede usar mona
 
 ```
@@ -266,7 +275,7 @@ Vamos a usar esa direccion para que apunte a JMP ESP y esa a nuestra shellcode.
 
 
 
-## Creando shellcode
+## 6. Creando shellcode
 
 Vamos a usar el msfvenom
 
