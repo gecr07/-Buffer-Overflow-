@@ -141,6 +141,8 @@ Vamos a verificar qu si se pudiera escribir una B osea 42 en el EIP
 
 ![image](https://github.com/gecr07/-Buffer-Overflow-/assets/63270579/8e144d49-fb5c-40bf-92e9-b978ec1c8529)
 
+![image](https://github.com/gecr07/-Buffer-Overflow-/assets/63270579/04eadeac-5f5a-411e-ad34-19e4dd6a6a02)
+
 
 ```python
 #!/usr/bin/python3
