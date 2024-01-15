@@ -275,6 +275,8 @@ Vamos a usar esa direccion para que apunte a JMP ESP y esa a nuestra shellcode.
 
 ![image](https://github.com/gecr07/-Buffer-Overflow-/assets/63270579/68dd75da-7d33-423b-9b5d-65ddccbbd41d)
 
+### Alternativa...
+
 Como alternativa KALI tienen NASM
 
 ![image](https://github.com/gecr07/-Buffer-Overflow-/assets/63270579/decc1477-930a-4e7f-b236-e51c0dca3c17)
