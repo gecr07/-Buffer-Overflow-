@@ -529,6 +529,36 @@ for x in range(1, 256):
 print() 
 ```
 
+![image](https://github.com/gecr07/-Buffer-Overflow-/assets/63270579/0c9da3db-5e6d-43e1-89a1-33684c7341a5)
+
+Una vez que tenemos todos los bad character y el offset modificamos nuestro eip.py Para asegurarnos que si logramos sobre esccribir el EIP ponemos en retun BBBB
+
+![image](https://github.com/gecr07/-Buffer-Overflow-/assets/63270579/ff97b8bf-018f-4bfa-86f9-9012eb82b07a)
+
+Y si todo sale bien el EIP va a estar con 42 que es el valor de la BBBB.
+
+![image](https://github.com/gecr07/-Buffer-Overflow-/assets/63270579/0c23f9d7-8244-4cb4-960c-d93547b35386)
+
+Entonces ahora si vamos a hacer uso de mona para poder comparar mona lo que hace es generar los numeros del 1 hasta el 255 (me parece) en hex y al comparar pues va viendo si es igual. nota algo importante para evitar problemas reinica el programa. recuerda el caracter 00 ese siempre es un badchar ya por defecto. Tome OVERFLOW9 porque es un caso especial con caracteres malos seguidos...
+
+```bash
+!mona bytearray -b "\x00"
+
+```
+
+![image](https://github.com/gecr07/-Buffer-Overflow-/assets/63270579/a41b63b8-7a25-4e9e-ba9d-92aa8a632bf5)
+
+Carga de nuevo el programa y manda el payload con todos los caracteres. Vamos a comparar con mona.
+
+```bash
+!mona compare -f C:\mona\oscp\bytearray.bin -a esp
+```
+![image](https://github.com/gecr07/-Buffer-Overflow-/assets/63270579/af45bf2b-bf81-4238-b34b-4b7f57ba741c)
+
+En este caso mona nos arrojo los siguientes badcharactes: 00 04 05 3e 3f e1 e2. NOTA usualmente cuando se ponen caracteres seguidos por ejemplo el 04 y 05 se toma el primero el otro se refleja como badcharacter por culpa del primero. Yo pensaba que esto era invariable pues resulta que pueden existir casos donde los bad charaters si sean seguidos para este caso el 3e 3f.
+
+
+
 
 
 
