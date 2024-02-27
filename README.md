@@ -555,10 +555,48 @@ Carga de nuevo el programa y manda el payload con todos los caracteres. Vamos a 
 ```
 ![image](https://github.com/gecr07/-Buffer-Overflow-/assets/63270579/af45bf2b-bf81-4238-b34b-4b7f57ba741c)
 
-En este caso mona nos arrojo los siguientes badcharactes: 00 04 05 3e 3f e1 e2. NOTA usualmente cuando se ponen caracteres seguidos por ejemplo el 04 y 05 se toma el primero el otro se refleja como badcharacter por culpa del primero. Yo pensaba que esto era invariable pues resulta que pueden existir casos donde los bad charaters si sean seguidos para este caso el 3e 3f.
+En este caso mona nos arrojo los siguientes badcharactes: 00 04 05 3e 3f e1 e2. NOTA usualmente cuando se ponen caracteres seguidos por ejemplo el 04 y 05 se toma el primero y el otro no es solo se usa el primero. El otro se refleja como badcharacter por culpa del primero. Yo pensaba que esto era invariable pues resulta que pueden existir casos donde los bad charaters si sean seguidos para este caso el 3e 3f.
 
+```
+!mona bytearray -b "\x00\x04"
+!mona compare -f C:\mona\oscp\bytearray.bin -a esp
+```
 
+Si la regla que describi arriba es cierta entonces al quitar el 04 cuando comparemos va a salir el 04 pero no el 05. Recuerda cerrar el depurador y volverlo a abrir despues modificar el script(quitando el 04 en este caso) y despues enviar el payload para finalmente comparar con mona.
 
+![image](https://github.com/gecr07/-Buffer-Overflow-/assets/63270579/3a62c170-b29d-4f52-a4d6-fea4eb0a3f6d)
 
+Es correcto no aparecio el 05 entonces la regla se cumple y el 05 no es badchar vamos a seguir con los otros. 00 04 3e 3f e1 e2
 
+```
+!mona bytearray -b "\x00\x04\x3e"
+!mona compare -f C:\mona\oscp\bytearray.bin -a esp
 
+```
+Si la regla se cumple deberia de desaparecer el 3f (en este caso ya sabemos que el 3f tambien es un badcharacter). Recuerda ir quitando los badcharacters que vas probando del script.
+
+![image](https://github.com/gecr07/-Buffer-Overflow-/assets/63270579/250c698d-286a-4db3-8db7-874b403c91bd)
+
+![image](https://github.com/gecr07/-Buffer-Overflow-/assets/63270579/3f0c1396-fadd-4379-81b3-131281f3149e)
+
+En este caso no se fue el 3f apesar que quitamos el 3e entonces esto quiere decir que es un bad char incluso aparecio un 40 que es el siguiente numero despues del 3f 
+
+![image](https://github.com/gecr07/-Buffer-Overflow-/assets/63270579/f84505be-3d63-4a68-848a-49f4ae2882fe)
+
+Entonces ahora si el 3f si es un bad char entonces se tiene que ir el 40.
+
+```
+!mona bytearray -b "\x00\x04\x3e\x3f"
+!mona compare -f C:\mona\oscp\bytearray.bin -a esp
+```
+
+Y efectivamente si se quito el 40 entonces ya vimos que el 3e y el 3f son bad char consecutivos lo que es un caso dificil. Finalmente vamos a quitar el e1 y supongo que la regla de que agarrar el primero y el segundo no es bad char se cumpla.
+
+```
+!mona bytearray -b "\x00\x04\x3e\x3f\xe1"
+!mona compare -f C:\mona\oscp\bytearray.bin -a esp
+```
+
+![image](https://github.com/gecr07/-Buffer-Overflow-/assets/63270579/50533b16-e52a-4972-a8a3-d8044290186c)
+
+Y efectivamente se fueron todos los badchars cuando dice Unmodified es cuando ya terminamos y quitamos todos los badchars...
