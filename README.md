@@ -490,7 +490,45 @@ except:
 
 ```
 
-Este script se va a ir modificando a necesidad por ejemplo para encontrar el offset vamos a enviar el patron que generamos lo ponemos en el payload
+Este script se va a ir modificando a necesidad por ejemplo para encontrar el offset vamos a enviar el patron que generamos lo ponemos en el payload.
+
+
+![image](https://github.com/gecr07/-Buffer-Overflow-/assets/63270579/4ecbdbc9-aebb-4d1c-9291-5f7d18abb0f9)
+
+Al enviar este patron tenemos que fijarnos en el EIP.
+
+![image](https://github.com/gecr07/-Buffer-Overflow-/assets/63270579/8e108d6f-86b1-4c16-959e-a0a21ec98dd4)
+
+El siguiente paso tenemos 2 opciones
+
+### Opcion 1
+
+Con ayuda de otra herramienta de metasploit calculamos el offset.
+
+![image](https://github.com/gecr07/-Buffer-Overflow-/assets/63270579/575ef751-b024-43b9-9fae-9141cb060601)
+
+
+```
+/usr/share/metasploit-framework/tools/exploit/pattern_offset.rb -l 1700 -q 35794234
+```
+### Opcion 2
+
+Con ayuda de mona
+
+![image](https://github.com/gecr07/-Buffer-Overflow-/assets/63270579/161572e8-1ae8-4b89-a444-5b5922f53871)
+
+```
+!mona findmsp -distance 1700
+```
+
+Una vez que ya tenemos el offset procedemos a buscar los bad characters. Tenemos un script que genera todos los caracteres badchars.py
+
+```python3
+for x in range(1, 256):
+  print("\\x" + "{:02x}".format(x), end='')
+print() 
+```
+
 
 
 
