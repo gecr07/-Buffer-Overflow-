@@ -601,3 +601,8 @@ Y efectivamente si se quito el 40 entonces ya vimos que el 3e y el 3f son bad ch
 ![image](https://github.com/gecr07/-Buffer-Overflow-/assets/63270579/50533b16-e52a-4972-a8a3-d8044290186c)
 
 Y efectivamente se fueron todos los badchars cuando dice Unmodified es cuando ya terminamos y quitamos todos los badchars...
+
+
+
+
+
