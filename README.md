@@ -410,6 +410,7 @@ En este caso se van a documentar los pasos que se utilizan para sacar los offset
 
 ```bash
 !mona config -set workingfolder c:\mona\%p
+xfreerdp /u:admin /p:password /cert:ignore /v:10.10.131.190 /workarea /tls-seclevel:0 /timeout:80000
 
 ```
 
